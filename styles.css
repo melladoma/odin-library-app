@@ -1,6 +1,8 @@
 body{
     margin: 0;
     padding:0;
+    background:#111827;
+    color:white;
 }
 form{
     padding:20px;
@@ -15,4 +17,55 @@ form input{
 }
 form button{
     width:90px;
+}
+header{
+    height:10vh;
+}
+
+.library-container{
+    
+    max-height: 1000px;
+    max-width:800px; 
+    margin:0 20vw;
+    transform:rotateZ(30deg);
+
+    /* Positioning variants */
+    /* margin:-100px auto; */
+    /* transform-origin: top; */
+
+    /* display:grid;
+    column-count:5; */
+    /* grid variant : allegedly sufficient for masonry grid but no? */
+
+    /* grid-template-columns: repeat(5,150px); */
+    /* fixed grid variant */
+
+    /* grid-template-columns: repeat(auto-fit,minmax(150px,1fr)); */
+    /* responsive grid variant */
+
+    display:flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+     gap:15px;
+
+}
+
+.dummy-book:nth-child(even),.card{
+    height:200px;
+    width: 150px;
+    background-color:grey;
+    
+}
+.dummy-book:nth-child(odd){
+    height:170px;
+    width: 150px;
+    background-color:grey;
+
+}
+
+/* COLORS TO RANDOMIZE */
+/* #74ce5e, #010101,#1c2edc,#cb523c,#ddd549,#a8cc48,#dddddd */
+
+#book-container{
+    display:flex;
 }
