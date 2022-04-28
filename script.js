@@ -8,12 +8,8 @@ let isRead;
 function addBookToLibrary() {
 
     let myLibraryTemp = [];
-    let userInput = [];
     //take user's input and store the new book objects into array
-    formFields.forEach(field => {
-        userInput.push(field.value)
-    });
-    let book = new Book(userInput);
+    let book = new Book();
     myLibraryTemp.push(book);
     sendToLocalStorage(myLibraryTemp);
 
@@ -21,20 +17,18 @@ function addBookToLibrary() {
     formFields.forEach(field => {
         field.value = "";
     });
-    userInput = [];
 
     //displays new book + stored books
     displayBooks();
 }
 
-function Book(inputArray) {
-    //constructor function
-    this.title = inputArray[0]
-    this.numPages = inputArray[2]
-    this.readStatus = inputArray[3]
-    this.author = inputArray[1]
-}
 
+function Book() {
+    this.title = document.getElementById('title').value
+    this.author = document.getElementById('author').value
+    this.numPages = document.getElementById('numOfPages').value
+    this.readStatus = document.querySelector('input[name="readingStatus"]:checked').value
+}
 function retrieveLocalStorage() {
     let storedArray;
     storedArray = localStorage.getItem("myLibraryStored");
@@ -73,10 +67,10 @@ function displayBooks() {
             if (item === "numPages") {
                 line.innerText = `${book[item]} pages`;
             } else if (item === "readStatus") {
-                if (book[item] === "yes") {
+                if (book[item] === "true") {
                     line.innerText = "read";
                     buttonRead.classList.add('button-read-true');
-                } else if (book[item] === "no") {
+                } else if (book[item] === "false") {
                     line.innerText = "not read yet";
                     buttonRead.classList.add('button-read-add');
                 }
@@ -111,23 +105,13 @@ submitButton.addEventListener('click', addBookToLibrary);
 
 
 //ISSUE LOG:
-// LOGIC
-//input block yes/no not working with radio button or checbox... refactoring needed
 
+
+
+// FEATURES TO ADD:
 // CSS:
 // add demo books if no books
 
-//code to refactor
-// let inputTitle = document.getElementById('title');
-// let inputAuthor = document.getElementById('author');
-// let inputPages = document.getElementById('numOfPages');
-// let inputRead = document.getElementById('readStatus')
-// submitButton.addEventListener('click', function (e) {
-//     e.preventDefault();
-//     let newBook = new Book(
-//         inputTitle.value,
-//         inputAuthor.value,
-//         inputPages.value,
-//         inputRead.value
-//     );
-// });
+// LOGIC
+// add e.preventDefault(); on event listener not to post on url?
+

@@ -54,11 +54,20 @@
             <label for="numOfPages">Number of pages:</label>
             <input type="tel" name="numOfPages" id="numOfPages">
         </div>
-        <div>
+        <!-- <div>
             <label for="readingStatus">Read:</label>
             <input type="text" name="readingStatus" id="readingStatus">
+        </div> -->
+
+        <div>
+            <label for="read">Read</label>
+            <input type="radio" name="readingStatus" id="read" value="true">
         </div>
     
+        <div>
+            <label for="read">Not Read yet</label>
+            <input type="radio" name="readingStatus" id="not-read" value="false">
+        </div>
 
         <button id="submitForm">Submit</button>
     </form>
