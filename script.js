@@ -13,9 +13,7 @@ function addBookToLibrary() {
     formFields.forEach(field => {
         userInput.push(field.value)
     });
-
     let book = new Book(userInput);
-
     myLibraryTemp.push(book);
     sendToLocalStorage(myLibraryTemp);
 
@@ -118,7 +116,6 @@ submitButton.addEventListener('click', addBookToLibrary);
 
 // CSS:
 // add demo books if no books
-// adapter dynamiquement taille police pour eviter overflow
 
 //code to refactor
 // let inputTitle = document.getElementById('title');
