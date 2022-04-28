@@ -3,17 +3,18 @@ let myLibraryStored;
 const bookContainer = document.getElementById('book-container');
 
 const formFields = document.querySelector('form').querySelectorAll('input');
-
-
+const submitBook = document.querySelector('#submitForm')
 
 function addBookToLibrary() {
-    let myLibraryTemp = [];
-    let userInput = [];
-    //take user's input and store the new book objects into array
-    formFields.forEach(field => {
-        userInput.push(field.value)
-    });
-    let book = new Book(userInput);
+
+    // let myLibraryTemp = [];
+    // let userInput = [];
+    // //take user's input and store the new book objects into array
+    // formFields.forEach(field => {
+    //     userInput.push(field.value)
+    // });
+    // let book = new Book(userInput);
+
     myLibraryTemp.push(book);
     sendToLocalStorage(myLibraryTemp);
 
@@ -26,13 +27,12 @@ function addBookToLibrary() {
     displayBooks();
 }
 
-
 function Book(inputArray) {
     //constructor function
     this.title = inputArray[0]
-    this.author = inputArray[1]
     this.numPages = inputArray[2]
     this.readStatus = inputArray[3]
+    this.author = inputArray[1]
 }
 
 function retrieveLocalStorage() {
@@ -61,7 +61,7 @@ function displayBooks() {
     myLibraryStored.forEach(book => {
         let card = document.createElement('div');
         let buttonRemove = document.createElement('button');
-        buttonRemove.innerText = "Delete";
+        buttonRemove.innerText = "-";
         buttonRemove.classList.add('button-remove');
         buttonRemove.addEventListener('click', deleteBook);
 
@@ -105,3 +105,5 @@ submitButton.addEventListener('click', addBookToLibrary);
 //to trouble shoot :
 //double card issued? 
 //add regEx sur yes/no if not input blocked
+//code to refactor
+
