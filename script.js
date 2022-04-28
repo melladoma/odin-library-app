@@ -3,17 +3,18 @@ let myLibraryStored;
 const bookContainer = document.getElementById('book-container');
 
 const formFields = document.querySelector('form').querySelectorAll('input');
-const submitBook = document.querySelector('#submitForm')
+let isRead;
 
 function addBookToLibrary() {
 
-    // let myLibraryTemp = [];
-    // let userInput = [];
-    // //take user's input and store the new book objects into array
-    // formFields.forEach(field => {
-    //     userInput.push(field.value)
-    // });
-    // let book = new Book(userInput);
+    let myLibraryTemp = [];
+    let userInput = [];
+    //take user's input and store the new book objects into array
+    formFields.forEach(field => {
+        userInput.push(field.value)
+    });
+
+    let book = new Book(userInput);
 
     myLibraryTemp.push(book);
     sendToLocalStorage(myLibraryTemp);
@@ -23,6 +24,7 @@ function addBookToLibrary() {
         field.value = "";
     });
     userInput = [];
+
     //displays new book + stored books
     displayBooks();
 }
@@ -53,6 +55,7 @@ function removeAllChildNodes(parent) {
     }
 }
 
+
 function displayBooks() {
     removeAllChildNodes(bookContainer);
     if (localStorage.getItem("myLibraryStored") != undefined) {
@@ -61,9 +64,11 @@ function displayBooks() {
     myLibraryStored.forEach(book => {
         let card = document.createElement('div');
         let buttonRemove = document.createElement('button');
-        buttonRemove.innerText = "-";
         buttonRemove.classList.add('button-remove');
         buttonRemove.addEventListener('click', deleteBook);
+
+        let buttonRead = document.createElement('button');
+        buttonRead.classList.add('button-read');
 
         for (let item in book) {
             let line = document.createElement('div');
@@ -72,8 +77,10 @@ function displayBooks() {
             } else if (item === "readStatus") {
                 if (book[item] === "yes") {
                     line.innerText = "read";
+                    buttonRead.classList.add('button-read-true');
                 } else if (book[item] === "no") {
                     line.innerText = "not read yet";
+                    buttonRead.classList.add('button-read-add');
                 }
             } else {
                 line.innerText = book[item];
@@ -83,6 +90,8 @@ function displayBooks() {
             card.setAttribute('class', 'card');
             card.appendChild(line);
             card.appendChild(buttonRemove);
+            card.appendChild(buttonRead);
+
 
         }
         bookContainer.appendChild(card)
@@ -102,8 +111,27 @@ displayBooks();
 const submitButton = document.getElementById('submitForm');
 submitButton.addEventListener('click', addBookToLibrary);
 
-//to trouble shoot :
-//double card issued? 
-//add regEx sur yes/no if not input blocked
-//code to refactor
 
+//ISSUE LOG:
+// LOGIC
+//double card issued? temp memory not updated?
+//input block yes/no not working with radio button or checbox... refactoring needed
+
+// CSS:
+// add demo books if no books
+// adapter dynamiquement taille police pour eviter overflow
+
+//code to refactor
+// let inputTitle = document.getElementById('title');
+// let inputAuthor = document.getElementById('author');
+// let inputPages = document.getElementById('numOfPages');
+// let inputRead = document.getElementById('readStatus')
+// submitButton.addEventListener('click', function (e) {
+//     e.preventDefault();
+//     let newBook = new Book(
+//         inputTitle.value,
+//         inputAuthor.value,
+//         inputPages.value,
+//         inputRead.value
+//     );
+// });
