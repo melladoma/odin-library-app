@@ -91,8 +91,6 @@ function displayBooks() {
             card.appendChild(line);
             card.appendChild(buttonRemove);
             card.appendChild(buttonRead);
-
-
         }
         bookContainer.appendChild(card)
     })
@@ -104,6 +102,8 @@ function deleteBook(ev) {
     let key = cardToDelete.getAttribute('data-key');
     myLibraryStored.splice(key, 1);
     localStorage.setItem("myLibraryStored", JSON.stringify(myLibraryStored));
+    displayBooks();
+
 }
 
 displayBooks();
@@ -114,7 +114,6 @@ submitButton.addEventListener('click', addBookToLibrary);
 
 //ISSUE LOG:
 // LOGIC
-//double card issued? temp memory not updated?
 //input block yes/no not working with radio button or checbox... refactoring needed
 
 // CSS:
