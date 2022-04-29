@@ -43,6 +43,10 @@ function removeAllChildNodes(parent) {
 }
 
 function displayBooks() {
+    const fonts = ["'EB Garamond', serif", "'Barlow Condensed', sans-serif", "'Courier New', Courier, monospace"];
+    const backgroundColors = ['#74ce5e', '#1c2edc', '#cb523c', '#ddd549', '#a8cc48', '#dddddd'];
+    const backgroundImages = ['url(./resources/20.png)', 'url(./resources/6.png)', 'url(./resources/28.svg)', 'url(./resources/11.svg)', 'url(./resources/12.svg)', 'url(./resources/27.svg)', 'url(./resources/37.svg)', 'url(./resources/21.svg)', 'url(./resources/13.svg)']
+
     removeAllChildNodes(bookContainer);
 
     myLibraryStored.forEach(book => {
@@ -56,7 +60,10 @@ function displayBooks() {
 
         for (let item in book) {
             let line = document.createElement('div');
-            if (item === "numPages") {
+            if (item === "title") {
+                line.innerText = book[item];
+                line.style.fontFamily = fonts[Math.floor(Math.random() * fonts.length)];
+            } else if (item === "numPages") {
                 line.innerText = `${book[item]} pages`;
             } else if (item === "readStatus") {
                 if (book[item] === "true") {
@@ -72,6 +79,8 @@ function displayBooks() {
             let bookIndex = myLibraryStored.indexOf(book);
             card.setAttribute('data-key', bookIndex);
             card.setAttribute('class', 'card');
+            card.style.backgroundColor = backgroundColors[Math.floor(Math.random() * backgroundColors.length)];
+            card.style.backgroundImage = backgroundImages[Math.floor(Math.random() * backgroundImages.length)]
             card.appendChild(line);
             card.appendChild(buttonRemove);
             card.appendChild(buttonRead);
@@ -106,7 +115,7 @@ function loadDemoBooks() {
         title: "Madame Bovary",
         author: "Gustave Flaubert",
         numPages: 479,
-        readStatus: false,
+        readStatus: "true",
     }
     myLibraryStored.push(newbook1, newbook2, newbook3);
     localStorage.setItem("myLibraryStored", JSON.stringify(myLibraryStored));
@@ -131,8 +140,9 @@ submitButton.addEventListener('click', addBookToLibrary);
 // FEATURES TO ADD:
 // CSS:
 // modal form
-// randomize title + fonts + background-color
+// change svg buttons color to currentColor
 
 // LOGIC
+//add toggle read on button
 // add e.preventDefault(); on event listener not to post on url?
 
