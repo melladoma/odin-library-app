@@ -1,12 +1,12 @@
 
 let myLibraryStored;
+
 const bookContainer = document.getElementById('book-container');
 
 const formFields = document.querySelector('form').querySelectorAll('input');
 let isRead;
 
 function addBookToLibrary() {
-
     let myLibraryTemp = [];
     //take user's input and store the new book objects into array
     let book = new Book();
@@ -21,7 +21,6 @@ function addBookToLibrary() {
     //displays new book + stored books
     displayBooks();
 }
-
 
 function Book() {
     this.title = document.getElementById('title').value
@@ -52,7 +51,11 @@ function displayBooks() {
     removeAllChildNodes(bookContainer);
     if (localStorage.getItem("myLibraryStored") != undefined) {
         retrieveLocalStorage();
+
+    } else if (myLibraryStored.length === 0) {
+        loadDemoBooks();
     }
+
     myLibraryStored.forEach(book => {
         let card = document.createElement('div');
         let buttonRemove = document.createElement('button');
@@ -98,19 +101,33 @@ function deleteBook(ev) {
 
 }
 
+function loadDemoBooks() {
+    console.log('load demo')
+    let newbook1 = {
+        title: "The Fellowship of the Ring",
+        author: "J.R.R Tolkien",
+        numPages: "423",
+        readStatus: "true",
+    }
+    myLibraryStored.push(newbook1);
+
+}
+
 displayBooks();
+
 
 const submitButton = document.getElementById('submitForm');
 submitButton.addEventListener('click', addBookToLibrary);
 
 
 //ISSUE LOG:
-
-
+// /
 
 // FEATURES TO ADD:
 // CSS:
+// modal form
 // add demo books if no books
+// randomize title + fonts + background-color
 
 // LOGIC
 // add e.preventDefault(); on event listener not to post on url?
