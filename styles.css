@@ -1,14 +1,87 @@
+@font-face {
+    font-family: 'cabanaregular';
+    src: url('./resources/fonts/cabana-regular-webfont.woff2') format('woff2'),
+         url('./resources/fonts/cabana-regular-webfont.woff') format('woff');
+    font-weight:normal;
+    font-style: normal;
+    }
+@font-face {
+        font-family: 'vacation_vibesregular';
+        src: url('./resources/fonts/vacationvibes-webfont.woff2') format('woff2'),
+             url('./resources/fonts/vacationvibes-webfont.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+@font-face {
+        font-family: 'klemer_display_demoregular';
+        src: url('./resources/fonts/klemerdisplaydemoregular-ax5qg-webfont.woff2') format('woff2'),
+             url('./resources/fonts/klemerdisplaydemoregular-ax5qg-webfont.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        line-height:0.9;
+    }
+
+@font-face {
+        font-family: 'andersregular';
+        src: url('./resources/fonts/anders-webfont.woff2') format('woff2'),
+             url('./resources/fonts/anders-webfont.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    
+}
 body{
     --background-color: #171717;
     --dark-grey:#262626;
-    --accent-color:rgb(221,221,221);
+    --black:#010101;
+    --pastel-green:rgb(168, 204, 72);
+    --white:#fafafa;
+    --medium-green:#74ce5e;
+    --yellow:#ddd549;
+    --red:#cb523c;
+    --blue:#1c2edc;
+    --light-grey:#dddddd;
+
     margin: 0;
     padding:0;
     background:var(--background-color);
     color:var(--background-color);
+    font-family:Helvetica, sans-serif;
 }
 h1{
-    color:var(--accent-color);
+    color:var(--white);
+    display:block;
+}
+header{
+    height:10vh;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:2vh 10vw;
+}
+header button{
+    font-family: inherit;
+    color:var(--white);
+    font-weight: 600;
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+    height:fit-content;
+    padding:13px;
+    border-radius: 30px;
+    background-color: var(--blue);
+    box-shadow: -2px 3px  var(--yellow);
+    border: none;
+}
+
+header button:hover{
+    transform:translateX(-2px) translateY(3px);
+    box-shadow: none;
+}
+
+.header-buttons{
+    display:flex;
+    gap:10px;
+    align-items: flex-start;
 }
 form{
     padding:20px;
@@ -16,6 +89,9 @@ form{
     justify-content: center;
     justify-items: end;
     gap:10px;
+    background-color: var(--white);
+    width:max-content;
+    border-radius:20px;
 }
 
 form input{
@@ -24,9 +100,7 @@ form input{
 form button{
     width:90px;
 }
-header{
-    height:10vh;
-}
+
 
 .library-container{
     
@@ -69,36 +143,32 @@ header{
 
 }
 
-/* COLORS TO RANDOMIZE */
-/* #74ce5e, #010101,#1c2edc,#cb523c,#ddd549,#a8cc48,#dddddd */
-/* FONTS TO RANDOMIZE => TO DOWNLOAD AFTER TESTS */ 
-/* font-family: 'Quicksand', sans-serif; */
-/* font-family: 'EB Garamond', serif; */
-/* font-family: 'Barlow Condensed', sans-serif; */
-/* font-family: 'Courier New', Courier, monospace; */
 .card{
     height:200px;
     width: 150px;
 }
 #book-container{
     display:flex;
-    padding:10px;
+    padding:2vh 10vw;
     gap:10px;
+    flex-wrap: wrap;
 }
 .card{
     position:relative;
-    background-size:130px 170px;
+    background-size:120px 170px;
     background-repeat: no-repeat;
     background-position:center 80%;
-    background-blend-mode:soft-light;
+    background-blend-mode:hard-light;
+    /* box-shadow: inset 10px 0 1px rgb(0,0,0,0.3); */
 }
 
 .card div:first-child{
     /* title */
     text-transform:uppercase;
     font-size:21px;
-    margin-bottom:10%;
     text-align: center;
+    margin-top:5px;
+    line-height: 1;
 }
 
 .card div:nth-child(3){
@@ -111,6 +181,7 @@ header{
     position: absolute;
     left:5px;
     top:125px;
+    
 }
 .card div:nth-child(4){
     /* read status */
@@ -153,7 +224,7 @@ header{
 .button-read{
     position:absolute;
     right:5px;
-    bottom:15%;
+    bottom:17%;
     background-color: transparent;
     border:none;
     box-shadow: none;

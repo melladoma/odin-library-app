@@ -1,9 +1,7 @@
 
 let myLibraryStored = [];
-
 const bookContainer = document.getElementById('book-container');
 const formFields = document.querySelector('form').querySelectorAll('input');
-
 
 function Book() {
     this.title = document.getElementById('title').value
@@ -11,7 +9,6 @@ function Book() {
     this.numPages = document.getElementById('numOfPages').value
     this.readStatus = document.querySelector('input[name="readingStatus"]:checked').value
 }
-
 
 function addBookToLibrary() {
     let myLibraryTemp = [];
@@ -46,7 +43,7 @@ function removeAllChildNodes(parent) {
 }
 
 function displayBooks() {
-    const fonts = ["'EB Garamond', serif", "'Barlow Condensed', sans-serif", "'Courier New', Courier, monospace"];
+    const fonts = ["'Times New Roman', Times, serif", "Helvetica, sans-serif", "'vacation_vibesregular',sans-serif", "'klemer_display_demoregular',sans-serif", "'andersregular',sans-serif"];
     const backgroundColors = ['#74ce5e', '#1c2edc', '#cb523c', '#ddd549', '#a8cc48', '#dddddd'];
     const backgroundImages = ['url(./resources/20.png)', 'url(./resources/6.png)', 'url(./resources/28.svg)', 'url(./resources/11.svg)', 'url(./resources/12.svg)', 'url(./resources/27.svg)', 'url(./resources/37.svg)', 'url(./resources/21.svg)', 'url(./resources/13.svg)']
 
@@ -109,8 +106,19 @@ function toggleRead(ev) {
     } else if (myLibraryStored[key].readStatus === "false") {
         myLibraryStored[key].readStatus = "true";
     }
+    localStorage.setItem("myLibraryStored", JSON.stringify(myLibraryStored));
     displayBooks();
 }
+
+function toggleDisplay() {
+    const bookContainer = document.getElementById('book-container');
+    if (displaygridActive) {
+        bookContainer.classList.remove("library-container")
+    } else if (!displaygridActive) {
+        bookContainer.classList.add("library-container");
+    }
+    displaygridActive = !displaygridActive;
+};
 
 function loadDemoBooks() {
     let newbook1 = {
@@ -135,6 +143,7 @@ function loadDemoBooks() {
     localStorage.setItem("myLibraryStored", JSON.stringify(myLibraryStored));
 }
 
+
 //functions launched on loading
 if (localStorage.myLibraryStored === undefined || localStorage.getItem("myLibraryStored") == '[]') {
     loadDemoBooks();
@@ -147,6 +156,10 @@ displayBooks();
 const submitButton = document.getElementById('submitForm');
 submitButton.addEventListener('click', addBookToLibrary);
 
+const displayButton = document.getElementById('button-display');
+let displaygridActive = false;
+displayButton.addEventListener('click', toggleDisplay);
+
 
 //ISSUE LOG:
 // as this.readStatus is not a boolean but a string, ugly if/else==="true"/"false" in displayBooks() and toggleRead()
@@ -155,7 +168,7 @@ submitButton.addEventListener('click', addBookToLibrary);
 // FEATURES TO ADD:
 // CSS:
 // modal form
-//add new custom fonts via type face
+// add new custom fonts via type face
 // change svg buttons color to currentColor
 
 // LOGIC
