@@ -4,6 +4,15 @@ let myLibraryStored = [];
 const bookContainer = document.getElementById('book-container');
 const formFields = document.querySelector('form').querySelectorAll('input');
 
+
+function Book() {
+    this.title = document.getElementById('title').value
+    this.author = document.getElementById('author').value
+    this.numPages = document.getElementById('numOfPages').value
+    this.readStatus = document.querySelector('input[name="readingStatus"]:checked').value
+}
+
+
 function addBookToLibrary() {
     let myLibraryTemp = [];
     //take user's input and store the new book objects into array
@@ -18,12 +27,6 @@ function addBookToLibrary() {
     });
 }
 
-function Book() {
-    this.title = document.getElementById('title').value
-    this.author = document.getElementById('author').value
-    this.numPages = document.getElementById('numOfPages').value
-    this.readStatus = document.querySelector('input[name="readingStatus"]:checked').value
-}
 function retrieveLocalStorage() {
     let storedArray;
     storedArray = localStorage.getItem("myLibraryStored");
@@ -57,6 +60,7 @@ function displayBooks() {
 
         let buttonRead = document.createElement('button');
         buttonRead.classList.add('button-read');
+        buttonRead.addEventListener('click', toggleRead)
 
         for (let item in book) {
             let line = document.createElement('div');
@@ -70,7 +74,6 @@ function displayBooks() {
                     line.innerText = "read";
                     buttonRead.classList.add('button-read-true');
                 } else if (book[item] === "false") {
-                    line.innerText = "not read yet";
                     buttonRead.classList.add('button-read-add');
                 }
             } else {
@@ -95,6 +98,17 @@ function deleteBook(ev) {
     let key = cardToDelete.getAttribute('data-key');
     myLibraryStored.splice(key, 1);
     localStorage.setItem("myLibraryStored", JSON.stringify(myLibraryStored));
+    displayBooks();
+}
+
+function toggleRead(ev) {
+    const targetCard = ev.currentTarget.parentNode;
+    let key = targetCard.getAttribute('data-key');
+    if (myLibraryStored[key].readStatus === "true") {
+        myLibraryStored[key].readStatus = "false";
+    } else if (myLibraryStored[key].readStatus === "false") {
+        myLibraryStored[key].readStatus = "true";
+    }
     displayBooks();
 }
 
@@ -135,14 +149,15 @@ submitButton.addEventListener('click', addBookToLibrary);
 
 
 //ISSUE LOG:
-// /
+// as this.readStatus is not a boolean but a string, ugly if/else==="true"/"false" in displayBooks() and toggleRead()
+//=> need to transform this.readStatus in boolean, but didn't achieve it with a prototype function... how to do it?
 
 // FEATURES TO ADD:
 // CSS:
 // modal form
+//add new custom fonts via type face
 // change svg buttons color to currentColor
 
 // LOGIC
-//add toggle read on button
 // add e.preventDefault(); on event listener not to post on url?
 
