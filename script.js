@@ -1,10 +1,8 @@
 
-let myLibraryStored;
+let myLibraryStored = [];
 
 const bookContainer = document.getElementById('book-container');
-
 const formFields = document.querySelector('form').querySelectorAll('input');
-let isRead;
 
 function addBookToLibrary() {
     let myLibraryTemp = [];
@@ -12,14 +10,12 @@ function addBookToLibrary() {
     let book = new Book();
     myLibraryTemp.push(book);
     sendToLocalStorage(myLibraryTemp);
-
+    //displays new book + stored books
+    displayBooks();
     //form visual clearance
     formFields.forEach(field => {
         field.value = "";
     });
-
-    //displays new book + stored books
-    displayBooks();
 }
 
 function Book() {
@@ -46,15 +42,8 @@ function removeAllChildNodes(parent) {
     }
 }
 
-
 function displayBooks() {
     removeAllChildNodes(bookContainer);
-    if (localStorage.getItem("myLibraryStored") != undefined) {
-        retrieveLocalStorage();
-
-    } else if (myLibraryStored.length === 0) {
-        loadDemoBooks();
-    }
 
     myLibraryStored.forEach(book => {
         let card = document.createElement('div');
@@ -98,23 +87,39 @@ function deleteBook(ev) {
     myLibraryStored.splice(key, 1);
     localStorage.setItem("myLibraryStored", JSON.stringify(myLibraryStored));
     displayBooks();
-
 }
 
 function loadDemoBooks() {
-    console.log('load demo')
     let newbook1 = {
-        title: "The Fellowship of the Ring",
-        author: "J.R.R Tolkien",
-        numPages: "423",
-        readStatus: "true",
+        title: "The Great Gatsby",
+        author: "F. Scott Fitzgerald",
+        numPages: "217",
+        readStatus: "false",
     }
-    myLibraryStored.push(newbook1);
+    let newbook2 = {
+        title: "Foundation",
+        author: "Isaac Asimov",
+        numPages: 255,
+        readStatus: "false",
+    }
+    let newbook3 = {
+        title: "Madame Bovary",
+        author: "Gustave Flaubert",
+        numPages: 479,
+        readStatus: false,
+    }
+    myLibraryStored.push(newbook1, newbook2, newbook3);
+    localStorage.setItem("myLibraryStored", JSON.stringify(myLibraryStored));
+}
 
+//functions launched on loading
+if (localStorage.myLibraryStored === undefined || localStorage.getItem("myLibraryStored") == '[]') {
+    loadDemoBooks();
+} else if (localStorage.getItem("myLibraryStored") != undefined) {
+    retrieveLocalStorage();
 }
 
 displayBooks();
-
 
 const submitButton = document.getElementById('submitForm');
 submitButton.addEventListener('click', addBookToLibrary);
@@ -126,7 +131,6 @@ submitButton.addEventListener('click', addBookToLibrary);
 // FEATURES TO ADD:
 // CSS:
 // modal form
-// add demo books if no books
 // randomize title + fonts + background-color
 
 // LOGIC
