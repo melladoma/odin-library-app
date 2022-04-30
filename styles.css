@@ -1,10 +1,4 @@
-@font-face {
-    font-family: 'cabanaregular';
-    src: url('./resources/fonts/cabana-regular-webfont.woff2') format('woff2'),
-         url('./resources/fonts/cabana-regular-webfont.woff') format('woff');
-    font-weight:normal;
-    font-style: normal;
-    }
+
 @font-face {
         font-family: 'vacation_vibesregular';
         src: url('./resources/fonts/vacationvibes-webfont.woff2') format('woff2'),
@@ -12,6 +6,7 @@
         font-weight: normal;
         font-style: normal;
     }
+/* Vacation Vibes handwritten font by Beveled Design Co (https://www.beveled.design/) free for personnal use  */
 @font-face {
         font-family: 'klemer_display_demoregular';
         src: url('./resources/fonts/klemerdisplaydemoregular-ax5qg-webfont.woff2') format('woff2'),
@@ -20,6 +15,7 @@
         font-style: normal;
         line-height:0.9;
     }
+/* Klemer Display font (demo version) by Prioritype (https://www.fontspace.com/prioritype) free for personnal use  */
 
 @font-face {
         font-family: 'andersregular';
@@ -27,8 +23,9 @@
              url('./resources/fonts/anders-webfont.woff') format('woff');
         font-weight: normal;
         font-style: normal;
-    
 }
+/* Anders font by Tom Anders Watkins (https://www.behance.net/tomanders) free via https://www.behance.net/gallery/18068463/Anders-(Free-Font)  */
+
 body{
     --background-color: #171717;
     --dark-grey:#262626;
@@ -155,11 +152,7 @@ form button{
 }
 .card{
     position:relative;
-    background-size:120px 170px;
-    background-repeat: no-repeat;
-    background-position:center 80%;
-    background-blend-mode:hard-light;
-    /* box-shadow: inset 10px 0 1px rgb(0,0,0,0.3); */
+    /* background-size:120px 170px;*/
 }
 
 .card div:first-child{
@@ -169,6 +162,7 @@ form button{
     text-align: center;
     margin-top:5px;
     line-height: 1;
+    height:2em;
 }
 
 .card div:nth-child(3){
@@ -205,6 +199,21 @@ form button{
     position: absolute;
     bottom:0;
     right:5px;
+}
+.img-div{
+    margin:0 auto;
+    /* position:absolute;
+    top:20%;
+    left:50%;
+    margin-left:-60px; */
+    height:130px;
+    width:120px;
+    /* background-repeat: no-repeat; */
+    background-blend-mode:hard-light;
+    background-size:cover;
+}
+.white-img{
+    filter: invert(89%) sepia(0%) saturate(499%) hue-rotate(184deg) brightness(95%) contrast(108%);
 }
 .button-remove{
     position:absolute;

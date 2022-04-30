@@ -44,7 +44,7 @@ function removeAllChildNodes(parent) {
 
 function displayBooks() {
     const fonts = ["'Times New Roman', Times, serif", "Helvetica, sans-serif", "'vacation_vibesregular',sans-serif", "'klemer_display_demoregular',sans-serif", "'andersregular',sans-serif"];
-    const backgroundColors = ['#74ce5e', '#1c2edc', '#cb523c', '#ddd549', '#a8cc48', '#dddddd'];
+    const backgroundColors = ['var(--red)', 'var(--blue)', 'var(--pastel-green)', 'var(--medium-green)', 'var(--yellow)', 'var(--light-grey)'];
     const backgroundImages = ['url(./resources/20.png)', 'url(./resources/6.png)', 'url(./resources/28.svg)', 'url(./resources/11.svg)', 'url(./resources/12.svg)', 'url(./resources/27.svg)', 'url(./resources/37.svg)', 'url(./resources/21.svg)', 'url(./resources/13.svg)']
 
     removeAllChildNodes(bookContainer);
@@ -58,6 +58,10 @@ function displayBooks() {
         let buttonRead = document.createElement('button');
         buttonRead.classList.add('button-read');
         buttonRead.addEventListener('click', toggleRead)
+
+        let imgdiv = document.createElement('div');
+        imgdiv.classList.add('img-div');
+        imgdiv.style.backgroundImage = backgroundImages[Math.floor(Math.random() * backgroundImages.length)];
 
         for (let item in book) {
             let line = document.createElement('div');
@@ -76,15 +80,22 @@ function displayBooks() {
             } else {
                 line.innerText = book[item];
             }
-            let bookIndex = myLibraryStored.indexOf(book);
-            card.setAttribute('data-key', bookIndex);
-            card.setAttribute('class', 'card');
-            card.style.backgroundColor = backgroundColors[Math.floor(Math.random() * backgroundColors.length)];
-            card.style.backgroundImage = backgroundImages[Math.floor(Math.random() * backgroundImages.length)]
             card.appendChild(line);
-            card.appendChild(buttonRemove);
-            card.appendChild(buttonRead);
         }
+
+        let bookIndex = myLibraryStored.indexOf(book);
+        card.setAttribute('data-key', bookIndex);
+        card.setAttribute('class', 'card');
+        card.appendChild(imgdiv);
+        card.style.backgroundColor = backgroundColors[Math.floor(Math.random() * backgroundColors.length)];
+
+        if (card.style.backgroundColor === 'var(--blue)' || card.style.backgroundColor === 'var(--red)') {
+            card.style.color = "var(--light-grey)";
+            imgdiv.classList.add('white-img');
+        }
+
+        card.appendChild(buttonRemove);
+        card.appendChild(buttonRead);
         bookContainer.appendChild(card)
     })
 }
@@ -168,8 +179,6 @@ displayButton.addEventListener('click', toggleDisplay);
 // FEATURES TO ADD:
 // CSS:
 // modal form
-// add new custom fonts via type face
-// change svg buttons color to currentColor
 
 // LOGIC
 // add e.preventDefault(); on event listener not to post on url?
