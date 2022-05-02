@@ -8,17 +8,17 @@ For this project, I challenged myself to try and reproduce a [design image conce
 
 ## Displays
 
-## My take on the original design inspiration
+### My take on the original design inspiration
 
 ![This an image of the alternative display](./resources/Library-app-altdisplay2_april22.png)
 
-## Default display
+### Default display
 
 ![This an image of the default display](./resources/Library-app_april22.png)
 
 Live version can be seen [here](https://melladoma.github.io/odin-library-app/).
 
-## added features
+## Added features
 
 - default examples books loading
 - local storage handling: books added by user are stored in local storage
