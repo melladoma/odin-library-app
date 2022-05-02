@@ -46,10 +46,23 @@ body{
     font-family:Helvetica, sans-serif;
 
 }
-h1{
+h1,h2{
     color:var(--white);
     display:block;
+    margin: 0;
 }
+h2{
+    display:flex;
+    align-items: center;
+    opacity: 0.6;
+    font-size: 0.7em;
+    font-weight: 300;
+}
+#github-icon{
+    filter: invert(89%) sepia(0%) saturate(499%) hue-rotate(184deg) brightness(95%) contrast(108%);
+    height:2em;
+}
+
 header{
     height:10vh;
     display:flex;
@@ -163,11 +176,7 @@ form button:hover{
 .card{
     height:200px;
     width: 150px;
-}
-
-.card{
     position:relative;
-    
 }
 
 .card div:first-child{
@@ -217,13 +226,8 @@ form button:hover{
 }
 .img-div{
     margin:0 auto;
-    /* position:absolute;
-    top:20%;
-    left:50%;
-    margin-left:-60px; */
     height:130px;
     width:120px;
-    /* background-repeat: no-repeat; */
     background-blend-mode:hard-light;
     background-size:cover;
 }
@@ -239,10 +243,10 @@ form button:hover{
     box-shadow: none;
 }
 .button-remove::after{
-    content:url(./resources/minus-circle.svg);
+    content:url(./resources/icons/minus-circle.svg);
 }
 .button-remove:hover::after{
-    content:url(./resources/minus-circle-red.svg);
+    content:url(./resources/icons/minus-circle-red.svg);
     opacity:60%;
 }
 .button-read{
@@ -254,16 +258,16 @@ form button:hover{
     box-shadow: none;
 }
 .button-read-add::after{
-content:url(./resources/checkbox-add.svg);
+content:url(./resources/icons/checkbox-add.svg);
 }
 
 .button-read-add:hover::after{
-    content:url(./resources/checkbox-add-green.svg);
+    content:url(./resources/icons/checkbox-add-green.svg);
     opacity:80%;
 }
 
 .button-read-true::after{
-content:url(./resources/checkbox-true.svg);
+content:url(./resources/icons/checkbox-true.svg);
 }
 .button-read-true:hover{
     opacity:60%;

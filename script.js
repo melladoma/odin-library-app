@@ -45,7 +45,7 @@ function removeAllChildNodes(parent) {
 function displayBooks() {
     const fonts = ["'Times New Roman', Times, serif", "Helvetica, sans-serif", "'vacation_vibesregular',sans-serif", "'klemer_display_demoregular',sans-serif", "'andersregular',sans-serif"];
     const backgroundColors = ['var(--red)', 'var(--blue)', 'var(--pastel-green)', 'var(--medium-green)', 'var(--yellow)', 'var(--light-grey)'];
-    const backgroundImages = ['url(./resources/20.png)', 'url(./resources/6.png)', 'url(./resources/28.svg)', 'url(./resources/11.svg)', 'url(./resources/12.svg)', 'url(./resources/27.svg)', 'url(./resources/37.svg)', 'url(./resources/21.svg)', 'url(./resources/13.svg)']
+    const backgroundImages = ['url(./resources/backgrounds/20.png)', 'url(./resources/backgrounds/6.png)', 'url(./resources/backgrounds/28.svg)', 'url(./resources/backgrounds/11.svg)', 'url(./resources/backgrounds/12.svg)', 'url(./resources/backgrounds/27.svg)', 'url(./resources/backgrounds/37.svg)', 'url(./resources/backgrounds/21.svg)', 'url(./resources/backgrounds/13.svg)']
 
     removeAllChildNodes(bookContainer);
 
@@ -159,7 +159,7 @@ function loadDemoBooks() {
         title: "Madame Bovary",
         author: "Gustave Flaubert",
         numPages: 479,
-        readStatus: "true",
+        readStatus: "false",
     }
     myLibraryStored.push(newbook1, newbook2, newbook3);
     localStorage.setItem("myLibraryStored", JSON.stringify(myLibraryStored));
@@ -189,7 +189,7 @@ const closeButton = document.getElementById('close-button');
 closeButton.addEventListener('click', displayModal);
 
 
-//ISSUE LOG:
+//v1 ISSUE LOG:
 // as this.readStatus is not a boolean but a string, ugly if/else==="true"/"false" in displayBooks() and toggleRead()
 //=> need to transform this.readStatus in boolean, but didn't achieve it with a prototype function... how to do it?
 
@@ -198,10 +198,7 @@ closeButton.addEventListener('click', displayModal);
 
 // if nothing is entered in read/not read => not inputted
 
-// FEATURES TO ADD:
-// CSS:
-// modal form
-
+// NICE TO HAVE
 // LOGIC
 // add e.preventDefault(); on event listener not to post on url?
 
