@@ -69,10 +69,11 @@ function displayBooks() {
                 line.innerText = book[item];
                 line.style.fontFamily = fonts[Math.floor(Math.random() * fonts.length)];
             } else if (item === "numPages") {
-                line.innerText = `${book[item]} pages`;
+                if (book[item] != "") {
+                    line.innerText = `${book[item]} pages`;
+                }
             } else if (item === "readStatus") {
                 if (book[item] === "true") {
-                    line.innerText = "read";
                     buttonRead.classList.add('button-read-true');
                 } else if (book[item] === "false") {
                     buttonRead.classList.add('button-read-add');
@@ -175,6 +176,9 @@ displayButton.addEventListener('click', toggleDisplay);
 //ISSUE LOG:
 // as this.readStatus is not a boolean but a string, ugly if/else==="true"/"false" in displayBooks() and toggleRead()
 //=> need to transform this.readStatus in boolean, but didn't achieve it with a prototype function... how to do it?
+
+// punctuation (I,Robot) and numbers (Fahrenheit) are deleted when inputted in text field 
+//=> modify validation?
 
 // FEATURES TO ADD:
 // CSS:
