@@ -12,37 +12,18 @@
     <header>
         <h1>Book collection</h1>
         <div class="header-buttons">
-            <button><img src="./resources/plus.svg" alt="plus icon">Add book</button>
+            <button id="button-add"><img src="./resources/plus.svg" alt="plus icon">Add book</button>
             <button id="button-display">Change Display</button>
         </div>
         
     </header>
-<!-- mock grid -->
-    <!-- <div class="library-container">
-            <div class="dummy-book">Dummy Book</div>
-            <div class="dummy-book">Dummy Book</div>
-            <div class="dummy-book">Dummy Book</div>
-            <div class="dummy-book">Dummy Book</div>
-            <div class="dummy-book">Dummy Book</div>
-            <div class="dummy-book">Dummy Book</div>
-            <div class="dummy-book">Dummy Book</div>
-            <div class="dummy-book">Dummy Book</div>
-            <div class="dummy-book">Dummy Book</div>
-            <div class="dummy-book">Dummy Book</div>
-            <div class="dummy-book">Dummy Book</div>
-            <div class="dummy-book">Dummy Book</div>
-            <div class="dummy-book">Dummy Book</div>
-            <div class="dummy-book">Dummy Book</div>
-            <div class="dummy-book">Dummy Book</div>
-            <div class="dummy-book">Dummy Book</div>
-            <div class="dummy-book">Dummy Book</div>
-            <div class="dummy-book">Dummy Book</div>
-        </div> -->
         <div id="book-container">
-        </div>
+        </div>   
+    
     
     <div id="form-container">
     <form method="get">
+        <div><button id="close-button"><img src="./resources/close-thick.svg" alt="close button"></button></div>
         <div>
             <label for="title">Title:</label>
             <input type="text" name="title" id="title">
@@ -59,7 +40,7 @@
         <div>
             <label for="read">Read</label>
             <input type="radio" name="readingStatus" id="read" value="true">
-            <label for="read">Not Read yet</label>
+            <label for="read">Not read yet</label>
             <input type="radio" name="readingStatus" id="not-read" value="false">
         </div>
 
@@ -67,6 +48,7 @@
     </form>
     </div>
 
+   
 
     <script src="./script.js"></script>
 </body>

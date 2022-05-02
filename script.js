@@ -132,6 +132,16 @@ function toggleDisplay() {
     displaygridActive = !displaygridActive;
 };
 
+function displayModal() {
+    const formContainer = document.getElementById('form-container');
+    console.log(!formContainer.style.display)
+    if (formContainer.style.display) {
+        formContainer.style.display = 'none';
+    } else if (!formContainer.style.display) {
+        formContainer.style.display = 'block';
+    }
+}
+
 function loadDemoBooks() {
     let newbook1 = {
         title: "The Great Gatsby",
@@ -172,6 +182,12 @@ const displayButton = document.getElementById('button-display');
 let displaygridActive = false;
 displayButton.addEventListener('click', toggleDisplay);
 
+const newBookButton = document.getElementById('button-add');
+newBookButton.addEventListener('click', displayModal);
+
+const closeButton = document.getElementById('close-button');
+closeButton.addEventListener('click', displayModal);
+
 
 //ISSUE LOG:
 // as this.readStatus is not a boolean but a string, ugly if/else==="true"/"false" in displayBooks() and toggleRead()
@@ -179,6 +195,8 @@ displayButton.addEventListener('click', toggleDisplay);
 
 // punctuation (I,Robot) and numbers (Fahrenheit) are deleted when inputted in text field 
 //=> modify validation?
+
+// if nothing is entered in read/not read => not inputted
 
 // FEATURES TO ADD:
 // CSS:
