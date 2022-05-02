@@ -6,11 +6,17 @@ The goal of this project was to create a simple JavaScript-only system for track
 
 For this project, I challenged myself to try and reproduce a [design image concept](https://dribbble.com/shots/17726062-Chord-Press-Book-Covers/attachments/12888441?mode=media) from [Ariel Jedrzejczak](https://dribbble.com/arieljedrzejczak) with CSS only.
 
-Available displays
+## Displays
+
+## My take on the original design inspiration
+
 ![This an image of the alternative display](./resources/Library-app-altdisplay2_april22.png)
+
+## Default display
+
 ![This an image of the default display](./resources/Library-app_april22.png)
 
-Live version can be seen [here].
+Live version can be seen [here](https://melladoma.github.io/odin-library-app/).
 
 ## added features
 
